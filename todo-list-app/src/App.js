@@ -21,7 +21,7 @@ function App() {
   const [todos,setTodos]= useState(initTodo);
  
 
-  
+  // on delete todo
   const onDelete = (todo) => {
     // todos = todos.splice(todos.indexOf(todo.sno),1); doesnt work in react
     setTodos(todos.filter((e) => {
