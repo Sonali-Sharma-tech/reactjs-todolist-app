@@ -10,6 +10,8 @@ const [desc, setDesc] = useState("")
          return;
      } 
      props.addTodo(title, desc);
+     setTitle('')
+     setDesc('')
     }
     return (
         

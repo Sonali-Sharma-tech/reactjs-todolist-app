@@ -11,14 +11,16 @@ import {
   Link
 } from "react-router-dom";
 function App() {
-  let initTodo;
+  let initTodo = [];
+  const [todos,setTodos]= useState(initTodo);
+  
   if(localStorage.getItem("todos") === null) {
     initTodo = [];
   }
   else {
     initTodo = JSON.parse(localStorage.getItem("todos"));
   }
-  const [todos,setTodos]= useState(initTodo);
+  
  
 
   // on delete todo
@@ -26,8 +28,9 @@ function App() {
     // todos = todos.splice(todos.indexOf(todo.sno),1); doesnt work in react
     setTodos(todos.filter((e) => {
       console.log(e);
-      return e===todo;
+      return e!==todo;
     }))
+    console.log(todos);
     localStorage.setItem("todos", JSON.stringify(todo));
   }
 
@@ -40,7 +43,7 @@ function App() {
     else {
       initTodo = JSON.parse(localStorage.getItem("todos"));
     }
-    if(!todos) {
+    if(todos.length === 0 || sno === undefined) {
       sno = 0;
     }
     else {
